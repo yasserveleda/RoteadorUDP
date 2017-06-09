@@ -13,13 +13,11 @@ import java.util.concurrent.Semaphore;
  */
 public class Vizinho {
     private String ip;
-    private boolean chave;
     private int contador;
     private Semaphore m;
     
     public Vizinho(String ip, int contador) {
         this.ip = ip;
-        this.chave = false;
         this.contador = contador;
         m = new Semaphore(1);
     }
@@ -40,11 +38,6 @@ public class Vizinho {
         m.tryAcquire();
         this.contador = contador;
         m.release();
-    }
-
-    @Override
-    public String toString() {
-        return "Vizinho{" + "ip=" + ip + ", chave=" + chave + "contador" + contador+'}';
     }
     
     public String getIp() {
